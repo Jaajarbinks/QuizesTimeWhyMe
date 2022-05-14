@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Another Quiz?</title>
+</head>
+<body>
+
+     <!--main body-->
+    <div id="container">
+     <!--push this to start-->
+        <div id="start">Start Quiz</div>
+     <!--What-->
+    <div id="guide">
+        <h2>What you have to do</h2>
+        <h4>1. You have to answer correct.</h4>
+        <h4>2. When you answer you can not undo.</h4>
+        <h4>3. You will get scored.</h4>
+        <h4>4. You have to wait to exit.</h4>
+        <div id="button">
+            <button id="exit">Quit</button>
+            <button id="KeepGoing">Keep Going</button>
+        </div>
+    </div>
+
+    <!--My Quiz-->
+    <div id="quiz">
+        <div id="quiz_header">
+            <h5>Nice Quiz</h5>
+            <div id="timer">
+                <h6>Time left</h6>
+                <h6 id="time">00</h6>
+            </div>
+        </div>
+<!--Questions-->
+    <div id="questions">
+        <h2 id="questionNo"></h2>
+        <h2 id="questionText"></h2>
+    </div>
+
+    <!--learned how to make classes and ids using the same line instead of typing out the whole
+    thing-->
+    <!--choices-->
+
+    <div id="optionList">
+        <h4 class="choice_que" id="option1"></h4>
+        <h4 class="choice_que" id="option2"></h4>
+        <h4 class="choice_que" id="option3"></h4>
+        <h4 class="choice_que" id="option4"></h4>
+    </div>
+
+    <!--answers-->
+
+    <div id="answersSection">
+        <h3 id="total_correct">3 of 5 questions</h3>
+        <h3 id="next_question">next</h3>
+    </div>
+    </div>
+<!--score results-->
+
+    <div id="result">
+        <h6>you have completed the quiz</h6>
+        <h6 id="points">you got "" out of 5</h6>
+         <button id="quit">Quit?</button>
+         <button id="startAgain">play again?</button>
+
+    </div>
+
+    </div>
+    <script src="java.js"></script>
+</body>
+</html>
