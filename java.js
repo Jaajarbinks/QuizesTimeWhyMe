@@ -31,7 +31,7 @@ let quit = document.querySelector("#quit");
 let startAgain = document.querySelector("#startAgain");
 
 //h4
-let choice_que = document.querySelector("#choice_que");
+let choice_que = document.querySelectorAll(".choice_que");
 
 let index = 0;
 let timer = 0;
@@ -69,7 +69,7 @@ let countDown = ()=> {
 
 setInterval(countDown, 3000);
 
-var loadData = [{
+var jeeps = [{
     questions: "html stand for?",
     choice1: "hyperlinks and text markup language",
     choice2: "hyper text markup language",
@@ -108,11 +108,11 @@ answer: 1
 
 let one = () => {
     questionNo.innerText = index + 1 + ". ";
-    questionText.innerText = loadData[index].questions;
-    option1.innerText = loadData[index].choice1;
-    option2.innerText = loadData[index].choice2;
-    option3.innerText = loadData[index].choice3;
-    option4.innerText = loadData[index].choice4;
+    questionText.innerText = jeeps[index].questions;
+    option1.innerText = jeeps[index].choice1;
+    option2.innerText = jeeps[index].choice2;
+    option3.innerText = jeeps[index].choice3;
+    option4.innerText = jeeps[index].choice4;
 
     //timer start
     timer = 30;
@@ -127,6 +127,7 @@ KeepGoingBtn.addEventListener("click" , ()=> {
     interval = setInterval(countDown, 3000);
     one();
 
+    
     choice_que.forEach(removeActive => {
         removeActive.classList.remove("active");
     })
@@ -137,9 +138,10 @@ KeepGoingBtn.addEventListener("click" , ()=> {
 
 
 //says forEach wont work not sure what to put
-choice_que.forEach( (choice, choiceNo) => {
-    choice.addEventListener("click" , ()=> {
-        choice.classList.add("active");
+choice_que.forEach( (choices, choiceNo) => {
+    choices.addEventListener("click" , ()=> {
+        choices.classList.add("active");
+
         if(choiceNo === one[index].answer) {
             correct++;
         }
@@ -147,11 +149,12 @@ choice_que.forEach( (choice, choiceNo) => {
             correct += 0;
         }
         //???
-        interval(interval);
+        clearInterval(interval);
         
         for(i = 0; i <= 3; i++) {
             choice_que[i].classList.add("disabled");
         }
+        
     })
 })
 
