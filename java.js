@@ -75,35 +75,35 @@ var jeeps = [{
     choice2: "hyper text markup language",
     choice3: "hyper text making language",
     choice4: "hyper text mark language" ,
-    answer: 1
+    answer: 0
 },
 {questions: "who is Clifard?",
 choice1: "waldos partner",
 choice2: "the mob boss",
 choice3: "the big red dog",
 choice4:"my piano teacher",
-answer: 3,
+answer: 2
 },
 {questions: "what goes on pizza?",
 choice1: "bannanas",
 choice2: "octopus",
 choice3: "orange juic",
 choice4: "pepperoni",
-answer: 4
+answer: 3
 },
 {questions: "Css stands for?",
 choice1: "colorful stylesheet",
 choice2: "creative style sheet",
 choice3: "cascading style sheet",
 choice4: "style sheet",
-answer: 2
+answer: 1
 },
 {questions: "how do you put comments in html?",
 choice1: "//this is comment",
 choice2: "/*this is comment*/",
 choice3: "</!---this is comment---/>",
 choice4: "//this is comment//",
-answer: 1     
+answer: 0    
 }];
 
 let one = () => {
@@ -119,7 +119,7 @@ let one = () => {
 }
 
 one();
-
+// console.log(jeeps);
 KeepGoingBtn.addEventListener("click" , ()=> {
     quiz.style.display = "block";
     guide.style.display = "none";
@@ -141,8 +141,9 @@ KeepGoingBtn.addEventListener("click" , ()=> {
 choice_que.forEach( (choices, choiceNo) => {
     choices.addEventListener("click" , ()=> {
         choices.classList.add("active");
-
-        if(choiceNo === one[index].answer) {
+console.log(choiceNo);
+console.log(jeeps[index].answer);
+        if(choiceNo === jeeps[index].answer) {
             correct++;
         }
         else {
@@ -153,13 +154,15 @@ choice_que.forEach( (choices, choiceNo) => {
         
         for(i = 0; i <= 3; i++) {
             choice_que[i].classList.add("disabled");
+            console.log(choice_que);
         }
         
     })
 })
 
 next_question.addEventListener("click" , ()=> {
-    if(index !== one.length - 1) {
+
+    if(index !== jeeps.length - 1) {
         index++;
         choice_que.forEach(removeActive => {
             removeActive.classList.remove("active");
@@ -168,7 +171,7 @@ next_question.addEventListener("click" , ()=> {
 
         total_correct.style.display = "block";
         total_correct.innerHTML = `${correct} out of ${one.length} questions`;
-        interval(interval);
+        clearinterval(interval);
         interval = setInterval(countDown , 3000);
     }
     else {
