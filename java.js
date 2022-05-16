@@ -25,7 +25,7 @@ let total_correct = document.querySelector("#total_correct");
 let next_question = document.querySelector("#next_question");
 
 //results
-let results = document.querySelector("#results");
+let result = document.querySelector("#result");
 let points = document.querySelector("#points");
 let quit = document.querySelector("#quit");
 let startAgain = document.querySelector("#startAgain");
@@ -126,13 +126,11 @@ KeepGoingBtn.addEventListener("click" , ()=> {
 
     interval = setInterval(countDown, 3000);
     one();
-
-    
-    choice_que.forEach(removeActive => {
+        choice_que.forEach(removeActive => {
         removeActive.classList.remove("active");
     })
-    
-    total_correct.innerHTML = `${correct = 0} out of ${one.length} questions`;
+    total_correct.innerHTML = `${correct = 0} out of ${5} questions`;
+
 });
 
 
@@ -141,8 +139,8 @@ KeepGoingBtn.addEventListener("click" , ()=> {
 choice_que.forEach( (choices, choiceNo) => {
     choices.addEventListener("click" , ()=> {
         choices.classList.add("active");
-console.log(choiceNo);
-console.log(jeeps[index].answer);
+// console.log(choiceNo);
+// console.log(jeeps[index].answer);
         if(choiceNo === jeeps[index].answer) {
             correct++;
         }
@@ -170,8 +168,9 @@ next_question.addEventListener("click" , ()=> {
         one();
 
         total_correct.style.display = "block";
-        total_correct.innerHTML = `${correct} out of ${one.length} questions`;
-        clearinterval(interval);
+        total_correct.innerHTML = `${correct} out of ${5} questions`;
+        
+        clearInterval(interval);
         interval = setInterval(countDown , 3000);
     }
     else {
@@ -179,20 +178,24 @@ next_question.addEventListener("click" , ()=> {
 
         clearInterval(interval);
         quiz.style.display = "none";
-        points.innerHTML = `you got ${correct} out of ${one.length}`;
-        results.style.display = "block";
+        points.innerHTML = `you got ${correct} out of ${5}`;
+        result.style.display = "block";
+        
     }
     for(i = 0; i <= 3; i++) {
         choice_que[i].classList.remove("disabled");
     }
 })
 
+
 quit.addEventListener("click" , ()=> {
     start.style.display = "block";
-    results.style.display = "none";
+    result.style.display = "none";
 });
 
-exit.addEventListener("click" , ()=> {
+startAgain.addEventListener("click" , ()=> {
     guide.style.display = "block";
-    results.style.display = "none";
+    result.style.display = "none";
+
+    
 });
