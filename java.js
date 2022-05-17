@@ -180,6 +180,13 @@ next_question.addEventListener("click" , ()=> {
         quiz.style.display = "none";
         points.innerHTML = `you got ${correct} out of ${5}`;
         result.style.display = "block";
+        // make array to hold the value
+        
+        
+        localStorage.setItem('totalPoints', correct);
+        let happy = localStorage.getItem('totalPoints');
+        console.log(happy);
+        
         
     }
     for(i = 0; i <= 3; i++) {
